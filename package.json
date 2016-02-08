@@ -1,0 +1,11 @@
+{
+  "name": "the-node-alliance",
+  "version": "1.0.0",
+  "description": "NodeJS wrapper for The Blue Alliance API",
+  "main": "src/TBA.js",
+  "dependencies": {
+    "xmlhttprequest": "^1.8.0"
+  },
+  "author": "FRC Team 955",
+  "license": "ISC"
+}

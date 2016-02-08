@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>the-node-alliance</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" type="text/css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/cayman.css">
+    <link rel="stylesheet" href="css/prism.css">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">the-node-alliance</h1>
+      <h2 class="project-tagline">NodeJS wrapper for The Blue Alliance API</h2><a href="https://npmjs.com/package/the-node-alliance" target="_blank" class="btn">View on npm</a>
+    </section>
+    <section data-spy="scroll" data-target=".scrollspy" class="main-content">
+      <div class="row">
+        <div class="col-md-3 col-xs-3 bs-docs-sidebar">
+          <ul id="sidebar" class="nav nav-stacked fixed">
+            <li><a href="index.html">Main</a></li>
+            <li class="active"><a href="TBA.js.html">TBA.js
+                <ul class="nav nav-stacked">
+                  <li><a href="#getData"><i class="alert alert-success"></i><span>getData</span></a>
+                  </li>
+                  <li><a href="#exports"><i class="alert alert-info"></i><span>exports</span></a>
+                  </li>
+                  <li><a href="#listTeams"><i class="alert alert-success"></i><span>listTeams</span></a>
+                  </li>
+                  <li><a href="#team"><i class="alert alert-success"></i><span>team</span></a>
+                  </li>
+                  <li><a href="#events"><i class="alert alert-success"></i><span>events</span></a>
+                  </li>
+                  <li><a href="#eventAwards"><i class="alert alert-success"></i><span>eventAwards</span></a>
+                  </li>
+                  <li><a href="#eventMatches"><i class="alert alert-success"></i><span>eventMatches</span></a>
+                  </li>
+                  <li><a href="#yearsParticipated"><i class="alert alert-success"></i><span>yearsParticipated</span></a>
+                  </li>
+                  <li><a href="#media"><i class="alert alert-success"></i><span>media</span></a>
+                  </li>
+                  <li><a href="#historyEvents"><i class="alert alert-success"></i><span>historyEvents</span></a>
+                  </li>
+                  <li><a href="#historyAwards"><i class="alert alert-success"></i><span>historyAwards</span></a>
+                  </li>
+                  <li><a href="#historyRobots"><i class="alert alert-success"></i><span>historyRobots</span></a>
+                  </li>
+                  <li><a href="#historyDistricts"><i class="alert alert-success"></i><span>historyDistricts</span></a>
+                  </li>
+                  <li><a href="#listEvents"><i class="alert alert-success"></i><span>listEvents</span></a>
+                  </li>
+                  <li><a href="#event"><i class="alert alert-success"></i><span>event</span></a>
+                  </li>
+                  <li><a href="#matches"><i class="alert alert-success"></i><span>matches</span></a>
+                  </li>
+                  <li><a href="#stats"><i class="alert alert-success"></i><span>stats</span></a>
+                  </li>
+                  <li><a href="#rankings"><i class="alert alert-success"></i><span>rankings</span></a>
+                  </li>
+                  <li><a href="#awards"><i class="alert alert-success"></i><span>awards</span></a>
+                  </li>
+                  <li><a href="#districtPoints"><i class="alert alert-success"></i><span>districtPoints</span></a>
+                  </li>
+                  <li><a href="#match"><i class="alert alert-success"></i><span>match</span></a>
+                  </li>
+                  <li><a href="#list"><i class="alert alert-success"></i><span>list</span></a>
+                  </li>
+                  <li><a href="#competitions"><i class="alert alert-success"></i><span>competitions</span></a>
+                  </li>
+                  <li><a href="#pointRankings"><i class="alert alert-success"></i><span>pointRankings</span></a>
+                  </li>
+                  <li><a href="#teams"><i class="alert alert-success"></i><span>teams</span></a>
+                  </li>
+                </ul></a></li>
+          </ul>
+        </div>
+        <div class="col-md-9">
+          <section id="getData">
+            <h1>getData</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-success radius ctx-type">declaration</div><span>&nbsp;</span><span>getData</span><span>&nbsp;</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>url</td>
+                <td>String</td>
+                <td><ul>
+<li>The Blue Alliance API URL</li>
+</ul>
+</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Files a GET request to The Blue Alliance using a Promise.</p></div>
+          <pre><code class="language-javascript">var getData = (url) =&gt;{
+    return new Promise((resolve,reject) =&gt;{
+        tbaReq.open(&quot;GET&quot;, url, true);      // Instantiate XMLHTTPRequest as a GET request at url. Mark as asynchronous
+        tbaReq.onreadystatechange = () =&gt; { // Runs when reday state changes
+            if(tbaReq.readyState === 4){        // Checks if request has been made 
+                if(tbaReq.status === 200){          // Checks if request was a success
+                    resolve(tbaReq.responseText);       // Sets Promise equal to the response
+                }
+                
+                else{    
+                    reject(tbaReq.statusText);  // If the the request failed set the Promise equal to the error text
+                }
+            }
+        };
+        
+        tbaReq.send();  // Sends the request
+    })
+}</code></pre>
+          <section id="exports">
+            <h1>exports</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>&nbsp;</span><span>module.exports()</span><span>&nbsp;</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>id</td>
+                <td>String</td>
+                <td><ul>
+<li>Idenfifier required by TBA api follows the format <team/person id>:<app description>:<version></li>
+</ul>
+</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Export a constructor for TBA requests</p></div>
+          <pre><code class="language-javascript">module.exports = function TBA(id){
+        // Set the app ID to the given ID
+        this.id = &quot;X-TBA-App-Id=&quot; + id;
+        
+        // Objects which contains methods for requests
+        this.team     = {};
+        this.event    = {};
+        this.district = {};</code></pre>
+          <section id="listTeams">
+            <h1>listTeams</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-success radius ctx-type">property</div><span>&nbsp;</span><span>this.team.listTeams</span><span>&nbsp;</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>data</td>
+                <td>Object</td>
+                <td><ul>
+<li>Object containing the property {pageNum}</li>
+</ul>
+</td>
+              </tr>
+              <tr>
+                <td>callback</td>
+                <td>Function</td>
+                <td><ul>
+<li>Function to be called with data returned from TBA</li>
+</ul>
+</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Files a GET request with the format for a page from the Team List Request</p></div>
+          <pre><code class="language-javascript">this.team.listTeams = (data, callback) =&gt; {
+    getData(`${startURL}/teams/${data.pageNum}?${this.id}`).then((response) =&gt; {
+        callback(JSON.parse(response));     // Calls the callback function with the response from TBA
+    },
+    (err) =&gt; {
+        callback(err);      // Calls the callback function with the error log
+    });      
+};</code></pre>
+          <section id="team">
+            <h1>team</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-success radius ctx-type">property</div><span>&nbsp;</span><span>this.team</span><span>&nbsp;</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>data</td>
+                <td>Object</td>
+                <td><ul>
+<li>Object containing the property {teamKey}</li>
+</ul>
+</td>
+              </tr>
+              <tr>
+                <td>callback</td>
+                <td>Function</td>
+                <td><ul>
+<li>Function to be called with data returned from TBA</li>
+</ul>
+</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Files a GET request with the format for a Team Request</p></div>
+          <pre><code class="language-javascript">this.team = (data, callback) =&gt; {
+    console.log(`${startURL}/team/frc${data.teamKey}?${this.id}`);
+    getData(`${startURL}/team/frc${data.teamKey}?${this.id}`).then((response) =&gt; {
+        callback(JSON.parse(response));     // Calls the callback function with the response from TBA
+    },
+    (err) =&gt; {
+        callback(err);      // Calls the callback function with the error log
+    }); 
+};</code></pre>
+          <section id="events">
+            <h1>events</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-success radius ctx-type">property</div><span>&nbsp;</span><span>this.team.events</span><span>&nbsp;</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>data</td>
+                <td>Object</td>
+                <td><ul>
+<li>Object containing the properties {teamKey, year}</li>
+</ul>
+</td>
+              </tr>
+              <tr>
+                <td>callback</td>
+                <td>Function</td>
+                <td><ul>
+<li>Function to be called with data returned from TBA</li>
+</ul>
+</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Files a GET request with the format for a Team Events Request</p></div>
+          <pre><code class="language-javascript">this.team.events = (data, callback) =&gt; {
+    getData(`${startURL}/team/frc${data.teamKey}/${data.year}/events?${this.id}`).then((response) =&gt; {
+        callback(JSON.parse(response));     // Calls the callback function with the response from TBA
+    },
+    (err) =&gt; {
+        callback(err);      // Calls the callback function with the error log
+    }); 
+};</code></pre>
+          <section id="eventAwards">
+            <h1>eventAwards</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-success radius ctx-type">property</div><span>&nbsp;</span><span>this.team.eventAwards</span><span>&nbsp;</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>data</td>
+                <td>Object</td>
+                <td><ul>
+<li>Object containing the properties {teamKey, year, eventKey}</li>
+</ul>
+</td>
+              </tr>
+              <tr>
+                <td>callback</td>
+                <td>Function</td>
+                <td><ul>
+<li>Function to be called with data returned from TBA</li>
+</ul>
+</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Files a GET request with the format for a Team Event Awards Request</p></div>
+          <pre><code class="language-javascript">this.team.eventAwards = (dat0a, callback) =&gt; {
+    getData(`${startURL}/team/frc${data.teamKey}/event/${data.year}${data.eventKey}/awards?${this.id}`).then((response) =&gt; {
+        callback(JSON.parse(response));     // Calls the callback function with the response from TBA
+    },
+    (err) =&gt; {
+        callback(err);      // Calls the callback function with the error log
+    }); 
+};</code></pre>
+          <section id="eventMatches">
+            <h1>eventMatches</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-success radius ctx-type">property</div><span>&nbsp;</span><span>this.team.eventMatches</span><span>&nbsp;</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>data</td>
+                <td>Object</td>
+                <td><ul>
+<li>Object containing the properties {teamKey, year, eventKey}</li>
+</ul>
+</td>
+              </tr>
+              <tr>
+                <td>callback</td>
+                <td>Function</td>
+                <td><ul>
+<li>Function to be called with data returned from TBA</li>
+</ul>
+</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Files a GET request with the format for a Team Event Matches Request</p></div>
+          <pre><code class="language-javascript">this.team.eventMatches = (data, callback) =&gt; {
+    getData(`${startURL}/team/frc${data.teamKey}/event/${data.year}${data.eventKey}/matches?${this.id}`).then((response) =&gt;{
+        callback(JSON.parse(response));     // Calls the callback function with the response from TBA
+    },
+    (err) =&gt; {
+        callback(err);      // Calls the callback function with the error log
+    }); 
+};</code></pre>
+          <section id="yearsParticipated">
+            <h1>yearsParticipated</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-success radius ctx-type">property</div><span>&nbsp;</span><span>this.team.yearsParticipated</span><span>&nbsp;</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>data</td>
+                <td>Object</td>
+                <td><ul>
+<li>Object containing the properties {teamKey}</li>
+</ul>
+</td>
+              </tr>
+              <tr>
+                <td>callback</td>
+                <td>Function</td>
+                <td><ul>
+<li>Function to be called with data returned from TBA</li>
+</ul>
+</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Files a GET request with the format for a Team Years Participated Request</p></div>
+          <pre><code class="language-javascript">this.team.yearsParticipated = (data, callback) =&gt; {
+    getData(`${startURL}/team/frc${data.teamKey}/years_participated?${this.id}`).then((response) =&gt; {
+        callback(JSON.parse(response));     // Calls the callback function with the response from TBA
+    },
+    (err) =&gt; {
+        callback(err);      // Calls the callback function with the error log
+    }); 
+};</code></pre>
+          <section id="media">
+            <h1>media</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-success radius ctx-type">property</div><span>&nbsp;</span><span>this.team.media</span><span>&nbsp;</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>data</td>
+                <td>Object</td>
+                <td><ul>
+<li>Object containing the properties {teamKey, year}</li>
+</ul>
+</td>
+              </tr>
+              <tr>
+                <td>callback</td>
+                <td>Function</td>
+                <td><ul>
+<li>Function to be called with data returned from TBA</li>
+</ul>
+</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Files a GET request with the format for a Team Media Request</p></div>
+          <pre><code class="language-javascript">this.team.media = (data, callback) =&gt; {
+    getData(`${startURL}/team/frc${data.teamKey}/${data.year}/media?${this.id}`).then((response) =&gt; {
+        callback(JSON.parse(response));     // Calls the callback function with the response from TBA
+    },
+    (err) =&gt; {
+        callback(err);      // Calls the callback function with the error log
+    }); 
+};</code></pre>
+          <section id="historyEvents">
+            <h1>historyEvents</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-success radius ctx-type">property</div><span>&nbsp;</span><span>this.team.historyEvents</span><span>&nbsp;</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>data</td>
+                <td>Object</td>
+                <td><ul>
+<li>Object containing the properties {teamKey}</li>
+</ul>
+</td>
+              </tr>
+              <tr>
+                <td>callback</td>
+                <td>Function</td>
+                <td><ul>
+<li>Function to be called with data returned from TBA</li>
+</ul>
+</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Files a GET request with the format for a Team History Events Request</p></div>
+          <pre><code class="language-javascript">this.team.historyEvents = (data, callback) =&gt; {
+    getData(`${startURL}/team/frc${data.teamKey}/history/events?${this.id}`).then((response) =&gt; {
+        callback(JSON.parse(response));     // Calls the callback function with the response from TBA
+    },
+    (err) =&gt; {
+        return(err);
+    });   
+};</code></pre>
+          <section id="historyAwards">
+            <h1>historyAwards</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-success radius ctx-type">property</div><span>&nbsp;</span><span>this.team.historyAwards</span><span>&nbsp;</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>data</td>
+                <td>Object</td>
+                <td><ul>
+<li>Object containing the properties {teamKey}</li>
+</ul>
+</td>
+              </tr>
+              <tr>
+                <td>callback</td>
+                <td>Function</td>
+                <td><ul>
+<li>Function to be called with data returned from TBA</li>
+</ul>
+</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Files a GET request with the format for a Team History Awards Request</p></div>
+          <pre><code class="language-javascript">this.team.historyAwards = (data, callback) =&gt; {
+    getData(`${startURL}/team/frc${data.teamKey}/history/awards?${this.id}`).then((response) =&gt; {
+        callback(JSON.parse(response));     // Calls the callback function with the response from TBA
+    },
+    (err) =&gt; {
+        callback(err);      // Calls the callback function with the error log
+    });   
+};</code></pre>
+          <section id="historyRobots">
+            <h1>historyRobots</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-success radius ctx-type">property</div><span>&nbsp;</span><span>this.team.historyRobots</span><span>&nbsp;</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>data</td>
+                <td>Object</td>
+                <td><ul>
+<li>Object containing the properties {teamKey}</li>
+</ul>
+</td>
+              </tr>
+              <tr>
+                <td>callback</td>
+                <td>Function</td>
+                <td><ul>
+<li>Function to be called with data returned from TBA</li>
+</ul>
+</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Files a GET request with the format for a Team History Robots Request</p></div>
+          <pre><code class="language-javascript">this.team.historyRobots = (data, callback) =&gt; {
+    getData(`${startURL}/team/frc${data.teamKey}/history/robots?${this.id}`).then((response) =&gt; {
+        callback(JSON.parse(response));     // Calls the callback function with the response from TBA
+    },
+    (err) =&gt; {
+        callback(err);      // Calls the callback function with the error log
+    });   
+};</code></pre>
+          <section id="historyDistricts">
+            <h1>historyDistricts</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-success radius ctx-type">property</div><span>&nbsp;</span><span>this.team.historyDistricts</span><span>&nbsp;</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>data</td>
+                <td>Object</td>
+                <td><ul>
+<li>Object containing the properties {teamKey}</li>
+</ul>
+</td>
+              </tr>
+              <tr>
+                <td>callback</td>
+                <td>Function</td>
+                <td><ul>
+<li>Function to be called with data returned from TBA</li>
+</ul>
+</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Files a GET request with the format for a Team History Districts Request</p></div>
+          <pre><code class="language-javascript">this.team.historyDistricts = (data, callback) =&gt; {
+    getData(`${startURL}/team/frc${data.teamKey}/history/districts?${this.id}`).then((response) =&gt; {
+        callback(JSON.parse(response));     // Calls the callback function with the response from TBA
+    },
+    (err) =&gt; {
+        callback(err);      // Calls the callback function with the error log
+    });   
+};</code></pre>
+          <section id="listEvents">
+            <h1>listEvents</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-success radius ctx-type">property</div><span>&nbsp;</span><span>this.event.listEvents</span><span>&nbsp;</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>data</td>
+                <td>Object</td>
+                <td><ul>
+<li>Object containing the properties {year}</li>
+</ul>
+</td>
+              </tr>
+              <tr>
+                <td>callback</td>
+                <td>Function</td>
+                <td><ul>
+<li>Function to be called with data returned from TBA</li>
+</ul>
+</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Files a GET request with the format for an Event List Request</p></div>
+          <pre><code class="language-javascript">this.event.listEvents = (data, callback) =&gt; {
+    getData(`${startURL}/events/${data.year}?${this.id}`).then((response) =&gt; {
+        callback(JSON.parse(response));     // Calls the callback function with the response from TBA
+    },
+    (err) =&gt; {
+        callback(err);      // Calls the callback function with the error log
+    });   
+};</code></pre>
+          <section id="event">
+            <h1>event</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-success radius ctx-type">property</div><span>&nbsp;</span><span>this.event</span><span>&nbsp;</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>data</td>
+                <td>Object</td>
+                <td><ul>
+<li>Object containing the properties {year, eventKey}</li>
+</ul>
+</td>
+              </tr>
+              <tr>
+                <td>callback</td>
+                <td>Function</td>
+                <td><ul>
+<li>Function to be called with data returned from TBA</li>
+</ul>
+</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Files a GET request with the format for a specific Event Request</p></div>
+          <pre><code class="language-javascript">this.event = (data, callback) =&gt; {
+    getData(`${startURL}/event/${data.year}${data.eventKey}?${this.id}`).then((response) =&gt; {
+        callback(JSON.parse(response));     // Calls the callback function with the response from TBA
+    },
+    (err) =&gt; {
+        callback(err);      // Calls the callback function with the error log
+    });   
+};</code></pre>
+          <section id="matches">
+            <h1>matches</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-success radius ctx-type">property</div><span>&nbsp;</span><span>this.event.matches</span><span>&nbsp;</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>data</td>
+                <td>Object</td>
+                <td><ul>
+<li>Object containing the properties {year, eventKey}</li>
+</ul>
+</td>
+              </tr>
+              <tr>
+                <td>callback</td>
+                <td>Function</td>
+                <td><ul>
+<li>Function to be called with data returned from TBA</li>
+</ul>
+</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Files a GET request with the format for a Event Matches Request</p></div>
+          <pre><code class="language-javascript">this.event.matches = (data, callback) =&gt; {
+    getData(`${startURL}/event/${data.year}${data.eventKey}/matches?${this.id}`).then((response) =&gt; {
+        callback(JSON.parse(response));     // Calls the callback function with the response from TBA
+    },
+    (err) =&gt; {
+        callback(err);      // Calls the callback function with the error log
+    });   
+};</code></pre>
+          <section id="stats">
+            <h1>stats</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-success radius ctx-type">property</div><span>&nbsp;</span><span>this.event.stats</span><span>&nbsp;</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>data</td>
+                <td>Object</td>
+                <td><ul>
+<li>Object containing the properties {year, eventKey}</li>
+</ul>
+</td>
+              </tr>
+              <tr>
+                <td>callback</td>
+                <td>Function</td>
+                <td><ul>
+<li>Function to be called with data returned from TBA</li>
+</ul>
+</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Files a GET request with the format for a Event Stats Request</p></div>
+          <pre><code class="language-javascript">this.event.stats = (data, callback) =&gt; {
+    getData(`${startURL}/event/${data.year}${data.eventKey}/stats?${this.id}`).then((response) =&gt; {
+        callback(JSON.parse(response));     // Calls the callback function with the response from TBA
+    },
+    (err) =&gt; {
+        callback(err);      // Calls the callback function with the error log
+    });   
+};</code></pre>
+          <section id="rankings">
+            <h1>rankings</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-success radius ctx-type">property</div><span>&nbsp;</span><span>this.event.rankings</span><span>&nbsp;</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>data</td>
+                <td>Object</td>
+                <td><ul>
+<li>Object containing the properties {year, eventKey}</li>
+</ul>
+</td>
+              </tr>
+              <tr>
+                <td>callback</td>
+                <td>Function</td>
+                <td><ul>
+<li>Function to be called with data returned from TBA</li>
+</ul>
+</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Files a GET request with the format for a Event Rankings Request</p></div>
+          <pre><code class="language-javascript">this.event.rankings = (data, callback) =&gt; {
+    getData(`${startURL}/event/${data.year}${data.eventKey}/rankings?${this.id}`).then((response) =&gt; {
+        callback(JSON.parse(response));     // Calls the callback function with the response from TBA
+    },
+    (err) =&gt; {
+        callback(err);      // Calls the callback function with the error log
+    });   
+};</code></pre>
+          <section id="awards">
+            <h1>awards</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-success radius ctx-type">property</div><span>&nbsp;</span><span>this.event.awards</span><span>&nbsp;</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>data</td>
+                <td>Object</td>
+                <td><ul>
+<li>Object containing the properties {year, eventKey}</li>
+</ul>
+</td>
+              </tr>
+              <tr>
+                <td>callback</td>
+                <td>Function</td>
+                <td><ul>
+<li>Function to be called with data returned from TBA</li>
+</ul>
+</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Files a GET request with the format for a Event Awards Request</p></div>
+          <pre><code class="language-javascript">this.event.awards = (data, callback) =&gt; {
+    getData(`${startURL}/event/${data.year}${data.eventKey}/awards?${this.id}`).then((response) =&gt; {
+        callback(JSON.parse(response));     // Calls the callback function with the response from TBA
+    },
+    (err) =&gt; {
+        callback(err);      // Calls the callback function with the error log
+    });
+};</code></pre>
+          <section id="districtPoints">
+            <h1>districtPoints</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-success radius ctx-type">property</div><span>&nbsp;</span><span>this.event.districtPoints</span><span>&nbsp;</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>data</td>
+                <td>Object</td>
+                <td><ul>
+<li>Object containing the properties {year, eventKey}</li>
+</ul>
+</td>
+              </tr>
+              <tr>
+                <td>callback</td>
+                <td>Function</td>
+                <td><ul>
+<li>Function to be called with data returned from TBA</li>
+</ul>
+</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Files a GET request with the format for a Event District Points Request</p></div>
+          <pre><code class="language-javascript">this.event.districtPoints = (data, callback) =&gt; {
+    getData(`${startURL}/event/${data.year}${data.eventKey}/district_points?${this.id}`).then((response) =&gt; {
+        callback(JSON.parse(response));     // Calls the callback function with the response from TBA
+    },
+    (err) =&gt; {
+        callback(err);      // Calls the callback function with the error log
+    });   
+};</code></pre>
+          <section id="match">
+            <h1>match</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-success radius ctx-type">property</div><span>&nbsp;</span><span>this.match</span><span>&nbsp;</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>data</td>
+                <td>Object</td>
+                <td><ul>
+<li>Object containing the properties {year, eventKey, matchKey}</li>
+</ul>
+</td>
+              </tr>
+              <tr>
+                <td>callback</td>
+                <td>Function</td>
+                <td><ul>
+<li>Function to be called with data returned from TBA</li>
+</ul>
+</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Files a GET request with the format for a Match Request</p></div>
+          <pre><code class="language-javascript">this.match = (data, callback) =&gt; {
+    getData(`${startURL}/match/${data.year}${data.eventKey}_${data.matchKey}?${this.id}`).then((response) =&gt; {
+        callback(JSON.parse(response));     // Calls the callback function with the response from TBA
+    },
+    (err) =&gt; {
+        callback(err);      // Calls the callback function with the error log
+    });
+};</code></pre>
+          <section id="list">
+            <h1>list</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-success radius ctx-type">property</div><span>&nbsp;</span><span>this.district.list</span><span>&nbsp;</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>data</td>
+                <td>Object</td>
+                <td><ul>
+<li>Object containing the properties {year}</li>
+</ul>
+</td>
+              </tr>
+              <tr>
+                <td>callback</td>
+                <td>Function</td>
+                <td><ul>
+<li>Function to be called with data returned from TBA</li>
+</ul>
+</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Files a GET request with the format for a District List Request</p></div>
+          <pre><code class="language-javascript">this.district.list = (data, callback) =&gt; {
+    getData(`${startURL}/districts/${data.year}?${this.id}`).then((response) =&gt; {
+        callback(JSON.parse(response));     // Calls the callback function with the response from TBA
+    },
+    (err) =&gt; {
+        callback(err);      // Calls the callback function with the error log
+    });   
+};</code></pre>
+          <section id="competitions">
+            <h1>competitions</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-success radius ctx-type">property</div><span>&nbsp;</span><span>this.district.competitions</span><span>&nbsp;</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>data</td>
+                <td>Object</td>
+                <td><ul>
+<li>Object containing the properties {districtKey, year}</li>
+</ul>
+</td>
+              </tr>
+              <tr>
+                <td>callback</td>
+                <td>Function</td>
+                <td><ul>
+<li>Function to be called with data returned from TBA</li>
+</ul>
+</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Files a GET request with the format for a District Events Request</p></div>
+          <pre><code class="language-javascript">this.district.competitions = (data, callback) =&gt; {
+    getData(`${startURL}/district/${data.districtKey}/${data.year}/events?${this.id}`).then((response) =&gt; {
+        callback(JSON.parse(response));     // Calls the callback function with the response from TBA
+    },
+    (err) =&gt; {
+        callback(err);      // Calls the callback function with the error log
+    });   
+};</code></pre>
+          <section id="pointRankings">
+            <h1>pointRankings</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-success radius ctx-type">property</div><span>&nbsp;</span><span>this.district.pointRankings</span><span>&nbsp;</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>data</td>
+                <td>Object</td>
+                <td><ul>
+<li>Object containing the properties {districtKey, year}</li>
+</ul>
+</td>
+              </tr>
+              <tr>
+                <td>callback</td>
+                <td>Function</td>
+                <td><ul>
+<li>Function to be called with data returned from TBA</li>
+</ul>
+</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Files a GET request with the format for a District Rankings Request</p></div>
+          <pre><code class="language-javascript">this.district.pointRankings = (data, callback) =&gt; {
+    getData(`${startURL}/district/${data.districtKey}/${data.year}/rankings?${this.id}`).then((response) =&gt; {
+        callback(JSON.parse(response));     // Calls the callback function with the response from TBA
+    },
+    (err) =&gt; {
+        callback(err);      // Calls the callback function with the error log
+    });   
+};</code></pre>
+          <section id="teams">
+            <h1>teams</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-success radius ctx-type">property</div><span>&nbsp;</span><span>this.district.teams</span><span>&nbsp;</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>data</td>
+                <td>Object</td>
+                <td><ul>
+<li>Object containing the properties {districtKey, year}</li>
+</ul>
+</td>
+              </tr>
+              <tr>
+                <td>callback</td>
+                <td>Function</td>
+                <td><ul>
+<li>Function to be called with data returned from TBA</li>
+</ul>
+</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Files a GET request with the format for a District Teams Request</p></div>
+          <pre><code class="language-javascript">this.district.teams = (data, callback) =&gt; {
+    getData(`${startURL}/district/${data.districtKey}/${data.year}/teams?${this.id}`).then((response) =&gt; {
+        callback(JSON.parse(response));     // Calls the callback function with the response from TBA
+    },
+    (err) =&gt; {
+        callback(err);      // Calls the callback function with the error log
+    });   
+};
+       
+    }</code></pre>
+          <div class="footer site-footer">
+            <div class="span site-footer-owner"><a href="https://github.com/mr-doc/mr-doc-theme-cayman">Cayman</a> is maintained by <a href="https://github.com/iwatakeshi">iwatakeshi</a>.</div>
+            <div class="span site-footer-credits">This page was generated by <a href="https://github.com/mr-doc/mr-doc">Mr. Doc</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/affix.js"></script>
+    <script src="js/dropdown.js"></script>
+    <script src="js/scrollspy.js"></script>
+    <script src="js/prism.js"></script>
+    <script src="js/prism-bash.js"></script>
+    <script>
+      $(document).ready(function(){
+        $('body').scrollspy({
+          target: ".bs-docs-sidebar",
+          offset: 40
+        });
+        $('#sidebar').affix({
+          offset:{
+            bottom:60,
+            top: 60
+          }
+        }) 
+      });
+    </script>
+  </body>
+</html>
