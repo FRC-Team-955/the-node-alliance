@@ -38,21 +38,6 @@ module.exports = function TBA(id){
         this.team     = {};
         this.event    = {};
         this.district = {};
-                
-        /**
-         * Files a GET request with the format for a page from the Team List Request
-         * @param {Object} data - Object containing the property {pageNum}
-         * @param {Function} callback - Function to be called with data returned from TBA 
-         */
-        
-        this.team.listTeams = (data, callback) => {
-            getData(`${startURL}/teams/${data.pageNum}?${this.id}`).then((response) => {
-                callback(JSON.parse(response));     // Calls the callback function with the response from TBA
-            },
-            (err) => {
-                callback(err);      // Calls the callback function with the error log
-            });      
-        };
         
         /**
          * Files a GET request with the format for a Team Request
@@ -62,6 +47,21 @@ module.exports = function TBA(id){
         this.team = (data, callback) => {
             console.log(`${startURL}/team/frc${data.teamKey}?${this.id}`);
             getData(`${startURL}/team/frc${data.teamKey}?${this.id}`).then((response) => {
+                callback(JSON.parse(response));     // Calls the callback function with the response from TBA
+            },
+            (err) => {
+                callback(err);      // Calls the callback function with the error log
+            }); 
+        };
+                
+        /**
+         * Files a GET request with the format for a page from the Team List Request
+         * @param {Object} data - Object containing the property {pageNum}
+         * @param {Function} callback - Function to be called with data returned from TBA 
+         */
+        
+        this.team.listTeams = (data, callback) => {
+            getData(`${startURL}/teams/${data.pageNum}?${this.id}`).then((response) => {
                 callback(JSON.parse(response));     // Calls the callback function with the response from TBA
             },
             (err) => {
@@ -89,7 +89,7 @@ module.exports = function TBA(id){
          * @param {Object} data - Object containing the properties {teamKey, year, eventKey}
          * @param {Function} callback - Function to be called with data returned from TBA
          */
-        this.team.eventAwards = (dat0a, callback) => {
+        this.team.eventAwards = (data, callback) => {
             getData(`${startURL}/team/frc${data.teamKey}/event/${data.year}${data.eventKey}/awards?${this.id}`).then((response) => {
                 callback(JSON.parse(response));     // Calls the callback function with the response from TBA
             },
@@ -195,6 +195,20 @@ module.exports = function TBA(id){
                 callback(err);      // Calls the callback function with the error log
             });   
         };    
+                
+        /**
+         * Files a GET request with the format for a specific Event Request
+         * @param {Object} data - Object containing the properties {year, eventKey}
+         * @param {Function} callback - Function to be called with data returned from TBA
+         */
+        this.event = (data, callback) => {
+            getData(`${startURL}/event/${data.year}${data.eventKey}?${this.id}`).then((response) => {
+                callback(JSON.parse(response));     // Calls the callback function with the response from TBA
+            },
+            (err) => {
+                callback(err);      // Calls the callback function with the error log
+            });   
+        };  
         
         /**
          * Files a GET request with the format for an Event List Request
@@ -208,22 +222,22 @@ module.exports = function TBA(id){
             (err) => {
                 callback(err);      // Calls the callback function with the error log
             });   
-        };
+        }; 
         
         /**
-         * Files a GET request with the format for a specific Event Request
+         * Files a GET request with the format for a Event Teams Request
          * @param {Object} data - Object containing the properties {year, eventKey}
          * @param {Function} callback - Function to be called with data returned from TBA
          */
-        this.event = (data, callback) => {
-            getData(`${startURL}/event/${data.year}${data.eventKey}?${this.id}`).then((response) => {
+        this.event.teams = (data, callback) => {
+            getData(`${startURL}/event/${data.year}${data.eventKey}/teams?${this.id}`).then((response) => {
                 callback(JSON.parse(response));     // Calls the callback function with the response from TBA
             },
             (err) => {
                 callback(err);      // Calls the callback function with the error log
             });   
-        };   
-        
+        };  
+           
         /**
          * Files a GET request with the format for a Event Matches Request
          * @param {Object} data - Object containing the properties {year, eventKey}
