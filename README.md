@@ -2,7 +2,7 @@
 
 The Node Alliance is a Node.js wrapper for The Blue Alliance API, using an XMLHTTPRequest object.
 It is a constructor initialized with your application ID that TBA requires with all API requests.
-Since it was originally created with Express and body-parser in mind, so each method passes the data
+Since it was originally created with Express and body-parser in mind, each method passes the data
 from TBA through a callback.
 
 ## Setup
